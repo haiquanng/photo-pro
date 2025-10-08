@@ -22,7 +22,8 @@ export const photographerService = {
     const queryString = params.toString();
     const url = queryString ? `/photographers?${queryString}` : '/photographers';
     
-    return api.get<PaginatedResponse<Photographer>>(url);
+    const response = await api.get<PaginatedResponse<Photographer>>(url);
+    return response.data;
   },
 
   // Get photographer by ID
@@ -69,7 +70,7 @@ export const photographerService = {
   },
 
   // Update photographer availability
-  updateAvailability: async (id: string, availability: any): Promise<Photographer> => {
+  updateAvailability: async (id: string, availability: unknown): Promise<Photographer> => {
     const response = await api.patch<Photographer>(`/photographers/${id}/availability`, availability);
     return response.data;
   },

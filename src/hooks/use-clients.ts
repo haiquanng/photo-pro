@@ -2,7 +2,7 @@
 
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { clientService } from '@/lib/api/services/clients';
-import { Client, CreateClientRequest, UpdateClientRequest, ClientFilters } from '@/types';
+import { CreateClientRequest, UpdateClientRequest, ClientFilters } from '@/types';
 import { toast } from 'sonner';
 
 // Query keys
@@ -58,13 +58,13 @@ export function useCreateClient() {
 
   return useMutation({
     mutationFn: (data: CreateClientRequest) => clientService.createClient(data),
-    onSuccess: (newClient) => {
+    onSuccess: () => {
       // Invalidate and refetch clients list
       queryClient.invalidateQueries({ queryKey: clientKeys.lists() });
       
       toast.success('Client created successfully');
     },
-    onError: (error: any) => {
+    onError: (error: Error) => {
       toast.error(error.message || 'Failed to create client');
     },
   });
@@ -85,7 +85,7 @@ export function useUpdateClient() {
       
       toast.success('Client updated successfully');
     },
-    onError: (error: any) => {
+    onError: (error: Error) => {
       toast.error(error.message || 'Failed to update client');
     },
   });
@@ -106,7 +106,7 @@ export function useDeleteClient() {
       
       toast.success('Client deleted successfully');
     },
-    onError: (error: any) => {
+    onError: (error: Error) => {
       toast.error(error.message || 'Failed to delete client');
     },
   });
@@ -128,7 +128,7 @@ export function useUpdateClientTier() {
       
       toast.success('Client tier updated successfully');
     },
-    onError: (error: any) => {
+    onError: (error: Error) => {
       toast.error(error.message || 'Failed to update client tier');
     },
   });
@@ -145,7 +145,7 @@ export function useSendClientEmail() {
     onSuccess: () => {
       toast.success('Email sent successfully');
     },
-    onError: (error: any) => {
+    onError: (error: Error) => {
       toast.error(error.message || 'Failed to send email');
     },
   });

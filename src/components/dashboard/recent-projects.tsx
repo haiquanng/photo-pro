@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Project } from '@/types';
-import { Calendar, User, Camera, ArrowRight } from 'lucide-react';
+import { Calendar, User, Camera } from 'lucide-react';
 
 interface RecentProjectsProps {
   projects: Project[];
@@ -74,7 +74,7 @@ export function RecentProjects({ projects }: RecentProjectsProps) {
                 </div>
                 <div className="flex flex-col items-end space-y-1 ml-2">
                   <div className="font-medium text-gray-900 text-sm">{formatCurrency(project.budget)}</div>
-                  <Badge className={getStatusColor(project.status)} size="sm">
+                  <Badge className={getStatusColor(project.status)}>
                     {project.status}
                   </Badge>
                 </div>

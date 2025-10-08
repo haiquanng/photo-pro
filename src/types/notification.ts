@@ -6,7 +6,7 @@ export interface Notification {
   message: string;
   read: boolean;
   createdAt: string;
-  data?: Record<string, any>;
+  data?: Record<string, unknown>;
 }
 
 export interface NotificationRequest {
@@ -14,7 +14,7 @@ export interface NotificationRequest {
   title: string;
   message: string;
   userId?: string;
-  data?: Record<string, any>;
+  data?: Record<string, unknown>;
 }
 
 export interface NotificationFilters {
@@ -27,12 +27,12 @@ export interface NotificationFilters {
 // Real-time Events
 export interface RealtimeEvent {
   type: 'project_updated' | 'client_updated' | 'photographer_updated' | 'notification';
-  data: any;
+  data: unknown;
   timestamp: string;
 }
 
 export interface WebSocketMessage {
   event: string;
-  data: any;
+  data: unknown;
   timestamp: string;
 }

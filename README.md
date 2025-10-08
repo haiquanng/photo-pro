@@ -48,7 +48,6 @@ src/
 ### Prerequisites
 
 - Node.js 18+
-- Redis server
 - npm or yarn
 
 ### Installation
@@ -64,31 +63,19 @@ src/
    npm install
    ```
 
-3. **Setup environment variables**
+3. **Setup environment variables (optional)**
    ```bash
-   cp .env.example .env.local
+   cp env.example .env.local
    ```
    
-   Update `.env.local` with your configuration:
-   ```env
-   NEXT_PUBLIC_API_URL=http://localhost:3001/api
-   REDIS_HOST=localhost
-   REDIS_PORT=6379
-   REDIS_PASSWORD=your-redis-password
-   NEXTAUTH_SECRET=your-secret-key
-   ```
+   The app works with mock data by default. Only set environment variables if you have a backend API.
 
-4. **Start Redis server**
-   ```bash
-   redis-server
-   ```
-
-5. **Run development server**
+4. **Run development server**
    ```bash
    npm run dev
    ```
 
-6. **Open your browser**
+5. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
 ## 🧪 Development
@@ -121,12 +108,8 @@ src/
    npx vercel
    ```
 
-2. **Set environment variables in Vercel dashboard**
-   - `NEXT_PUBLIC_API_URL`
-   - `REDIS_HOST`
-   - `REDIS_PORT`
-   - `REDIS_PASSWORD`
-   - `NEXTAUTH_SECRET`
+2. **Deploy with one click**
+   No environment variables needed! The app works with mock data out of the box.
 
 3. **Deploy**
    ```bash

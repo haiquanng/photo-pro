@@ -19,7 +19,7 @@ export interface PaginatedResponse<T> {
 export interface ApiError {
   message: string;
   code: string;
-  details?: Record<string, any>;
+  details?: Record<string, unknown>;
 }
 
 // Request Types

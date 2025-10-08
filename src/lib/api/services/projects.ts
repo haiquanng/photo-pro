@@ -63,13 +63,13 @@ export const projectService = {
   },
 
   // Add project milestone
-  addMilestone: async (projectId: string, milestone: any) => {
+  addMilestone: async (projectId: string, milestone: unknown) => {
     const response = await api.post(`/projects/${projectId}/milestones`, milestone);
     return response.data;
   },
 
   // Update milestone
-  updateMilestone: async (projectId: string, milestoneId: string, data: any) => {
+  updateMilestone: async (projectId: string, milestoneId: string, data: unknown) => {
     const response = await api.put(`/projects/${projectId}/milestones/${milestoneId}`, data);
     return response.data;
   },
