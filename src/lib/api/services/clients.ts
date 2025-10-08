@@ -22,7 +22,8 @@ export const clientService = {
     const queryString = params.toString();
     const url = queryString ? `/clients?${queryString}` : '/clients';
     
-    return api.get<PaginatedResponse<Client>>(url);
+    const response = await api.get<PaginatedResponse<Client>>(url);
+    return response.data;
   },
 
   // Get client by ID

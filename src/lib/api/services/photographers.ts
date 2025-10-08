@@ -22,7 +22,8 @@ export const photographerService = {
     const queryString = params.toString();
     const url = queryString ? `/photographers?${queryString}` : '/photographers';
     
-    return api.get<PaginatedResponse<Photographer>>(url);
+    const response = await api.get<PaginatedResponse<Photographer>>(url);
+    return response.data;
   },
 
   // Get photographer by ID
