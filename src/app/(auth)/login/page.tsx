@@ -79,13 +79,13 @@ export default function LoginPage() {
     setIsLoading(false);
   };
 
-  const fillDemoCredentials = (type: string) => {
-    const users = mockUsers[type as keyof typeof mockUsers];
-    if (users.length > 0) {
-      setEmail(users[0].email);
-      setPassword(users[0].password);
-    }
-  };
+  // const fillDemoCredentials = (type: string) => {
+  //   const users = mockUsers[type as keyof typeof mockUsers];
+  //   if (users.length > 0) {
+  //     setEmail(users[0].email);
+  //     setPassword(users[0].password);
+  //   }
+  // };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-600 to-purple-700 flex items-center justify-center p-4">
@@ -199,7 +199,7 @@ export default function LoginPage() {
                 </form>
                 
                 <div className="text-center">
-                  <span className="text-sm text-gray-600">Don't have an account? </span>
+                  <span className="text-sm text-gray-600">Don&apos;t have an account? </span>
                   <Button variant="link" className="p-0 h-auto">
                     Sign up
                   </Button>

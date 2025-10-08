@@ -69,7 +69,7 @@ export const photographerService = {
   },
 
   // Update photographer availability
-  updateAvailability: async (id: string, availability: any): Promise<Photographer> => {
+  updateAvailability: async (id: string, availability: unknown): Promise<Photographer> => {
     const response = await api.patch<Photographer>(`/photographers/${id}/availability`, availability);
     return response.data;
   },

@@ -48,8 +48,8 @@ src/
 ### Prerequisites
 
 - Node.js 18+
-- Redis server
 - npm or yarn
+- Redis server (optional, for caching)
 
 ### Installation
 
@@ -66,29 +66,24 @@ src/
 
 3. **Setup environment variables**
    ```bash
-   cp .env.example .env.local
+   cp env.example .env.local
    ```
    
    Update `.env.local` with your configuration:
    ```env
    NEXT_PUBLIC_API_URL=http://localhost:3001/api
-   REDIS_HOST=localhost
-   REDIS_PORT=6379
-   REDIS_PASSWORD=your-redis-password
-   NEXTAUTH_SECRET=your-secret-key
+   # Redis is optional for development
+   # REDIS_HOST=localhost
+   # REDIS_PORT=6379
+   # REDIS_PASSWORD=your-redis-password
    ```
 
-4. **Start Redis server**
-   ```bash
-   redis-server
-   ```
-
-5. **Run development server**
+4. **Run development server**
    ```bash
    npm run dev
    ```
 
-6. **Open your browser**
+5. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
 ## 🧪 Development

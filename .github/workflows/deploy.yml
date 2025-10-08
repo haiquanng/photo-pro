@@ -33,9 +33,9 @@ jobs:
         run: npm run build
         env:
           NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
-          REDIS_HOST: ${{ secrets.REDIS_HOST }}
-          REDIS_PORT: ${{ secrets.REDIS_PORT }}
-          REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
+          # REDIS_HOST: ${{ secrets.REDIS_HOST }}
+          # REDIS_PORT: ${{ secrets.REDIS_PORT }}
+          # REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
 
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v25

@@ -2,7 +2,7 @@
 
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { projectService } from '@/lib/api/services/projects';
-import { Project, CreateProjectRequest, UpdateProjectRequest, ProjectFilters } from '@/types';
+import { CreateProjectRequest, UpdateProjectRequest, ProjectFilters } from '@/types';
 import { toast } from 'sonner';
 
 // Query keys
@@ -47,13 +47,13 @@ export function useCreateProject() {
 
   return useMutation({
     mutationFn: (data: CreateProjectRequest) => projectService.createProject(data),
-    onSuccess: (newProject) => {
+    onSuccess: () => {
       // Invalidate and refetch projects list
       queryClient.invalidateQueries({ queryKey: projectKeys.lists() });
       
       toast.success('Project created successfully');
     },
-    onError: (error: any) => {
+    onError: (error: Error) => {
       toast.error(error.message || 'Failed to create project');
     },
   });
@@ -74,7 +74,7 @@ export function useUpdateProject() {
       
       toast.success('Project updated successfully');
     },
-    onError: (error: any) => {
+    onError: (error: Error) => {
       toast.error(error.message || 'Failed to update project');
     },
   });
@@ -95,7 +95,7 @@ export function useDeleteProject() {
       
       toast.success('Project deleted successfully');
     },
-    onError: (error: any) => {
+    onError: (error: Error) => {
       toast.error(error.message || 'Failed to delete project');
     },
   });
@@ -117,7 +117,7 @@ export function useUpdateProjectStatus() {
       
       toast.success('Project status updated successfully');
     },
-    onError: (error: any) => {
+    onError: (error: Error) => {
       toast.error(error.message || 'Failed to update project status');
     },
   });
@@ -136,7 +136,7 @@ export function useUploadProjectFiles() {
       
       toast.success('Files uploaded successfully');
     },
-    onError: (error: any) => {
+    onError: (error: Error) => {
       toast.error(error.message || 'Failed to upload files');
     },
   });

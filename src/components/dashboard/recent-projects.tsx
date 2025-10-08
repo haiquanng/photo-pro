@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Project } from '@/types';
-import { Calendar, User, Camera, ArrowRight } from 'lucide-react';
+import { Calendar, User, Camera } from 'lucide-react';
 
 interface RecentProjectsProps {
   projects: Project[];
