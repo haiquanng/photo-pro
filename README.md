@@ -96,7 +96,6 @@ src/
 - **TypeScript** - Full type safety
 - **ESLint** - Code linting
 - **Prettier** - Code formatting
-- **Husky** - Git hooks
 - **Jest** - Testing framework
 
 ## 🚀 Deployment
@@ -130,7 +129,7 @@ The project includes GitHub Actions workflow for automated deployment:
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `NEXT_PUBLIC_API_URL` | API base URL | `http://localhost:3001/api` |
+| `NEXT_PUBLIC_API_URL` | API base URL |
 | `REDIS_HOST` | Redis host | `localhost` |
 | `REDIS_PORT` | Redis port | `6379` |
 | `REDIS_PASSWORD` | Redis password | - |
@@ -177,8 +176,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🆘 Support
 
-For support, email support@photopro.com or join our Slack channel.
-
----
-
-Built with ❤️ by the PhotoPro team
+For support, ping me at nguyenhaiquan.data@gmail.com. 
