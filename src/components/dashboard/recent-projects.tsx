@@ -74,7 +74,7 @@ export function RecentProjects({ projects }: RecentProjectsProps) {
                 </div>
                 <div className="flex flex-col items-end space-y-1 ml-2">
                   <div className="font-medium text-gray-900 text-sm">{formatCurrency(project.budget)}</div>
-                  <Badge className={getStatusColor(project.status)} size="sm">
+                  <Badge className={getStatusColor(project.status)}>
                     {project.status}
                   </Badge>
                 </div>
