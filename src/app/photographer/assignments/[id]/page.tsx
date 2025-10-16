@@ -41,8 +41,6 @@ const getStatusColor = (status: string) => {
 };
 
 export default function PhotographerAssignmentDetailPage() {
-  // useParams is only for Client Components in App Router
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const params = useParams();
   const id = (params?.id as string) ?? '';
   const data = assignments.find(a => a.id === id);

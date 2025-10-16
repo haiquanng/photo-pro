@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 
@@ -21,8 +22,8 @@ export default function TopPhotographers() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {photographers.map((p) => (
             <div key={p.id} className="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition">
-              <div className="relative overflow-hidden">
-                <img src={p.avatar} alt={p.name} className="w-full h-64 object-cover group-hover:scale-110 transition-transform" />
+              <div className="relative overflow-hidden h-64">
+                <Image src={p.avatar} alt={p.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform" width={400} height={256} />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
               <div className="p-6">

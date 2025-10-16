@@ -23,7 +23,6 @@ const getStatusColor = (status: string) => {
 };
 
 export default function PhotographerUploadDetailPage() {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const params = useParams();
   const id = (params?.id as string) ?? '';
   const data = uploads.find(u => u.id === id);

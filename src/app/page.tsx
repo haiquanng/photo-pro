@@ -1,7 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Camera, Calendar, MapPin, Search, Users, Edit, Star } from 'lucide-react';
+import { Camera } from 'lucide-react';
 import Link from 'next/link';
 import Hero from '@/components/homepage/Hero';
 import About from '@/components/homepage/About';

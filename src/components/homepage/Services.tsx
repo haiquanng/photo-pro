@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 
@@ -21,7 +22,7 @@ export default function Services() {
           {services.map((service) => (
             <div key={service.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition">
               <div className="relative h-48 overflow-hidden">
-                <img src={service.image} alt={service.name} className="w-full h-full object-cover" />
+                <Image src={service.image} alt={service.name} className="w-full h-full object-cover" width={800} height={480} />
                 <div className="absolute top-4 right-4 bg-white/90 text-purple-600 font-semibold px-3 py-1 rounded-full text-sm">
                   {service.price}
                 </div>

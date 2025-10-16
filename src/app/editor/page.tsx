@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { 
-  Image, 
+  Image as ImageIcon, 
   Upload,
   Download,
   Eye,
@@ -130,7 +130,7 @@ export default function EditorDashboard() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center space-x-2">
-              <Image className="w-5 h-5 text-purple-600" />
+              <ImageIcon className="w-5 h-5 text-purple-600" />
               <span>Editing Queue</span>
             </CardTitle>
           </CardHeader>
@@ -226,7 +226,7 @@ export default function EditorDashboard() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
             <Button className="flex flex-col items-center space-y-2 h-auto py-6">
-              <Image className="w-6 h-6" />
+              <ImageIcon className="w-6 h-6" />
               <span>Start Editing</span>
             </Button>
             <Button variant="outline" className="flex flex-col items-center space-y-2 h-auto py-6">

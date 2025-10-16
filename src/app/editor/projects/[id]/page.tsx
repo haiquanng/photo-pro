@@ -26,7 +26,6 @@ const mock = {
 };
 
 export default function EditorProjectDetailPage() {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const params = useParams();
   const id = (params?.id as string) ?? '';
   if (!id) return notFound();
