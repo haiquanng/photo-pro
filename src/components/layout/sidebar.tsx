@@ -21,19 +21,14 @@ const navigation = [
   { name: 'Projects', href: '/admin/projects', icon: FolderOpen, status: 'active' },
   { name: 'Clients', href: '/admin/clients', icon: Users, status: 'active' },
   { name: 'Photographers', href: '/admin/photographers', icon: Camera, status: 'active' },
-  { name: 'Calendar', href: '/admin/calendar', icon: Calendar, status: 'coming-soon' },
-  { name: 'Analytics', href: '/admin/analytics', icon: BarChart3, status: 'coming-soon' },
-  { name: 'Invoices', href: '/admin/invoices', icon: CreditCard, status: 'coming-soon' },
-  { name: 'Files', href: '/admin/files', icon: FileText, status: 'coming-soon' },
-  { name: 'Settings', href: '/admin/settings', icon: Settings, status: 'coming-soon' },
+  { name: 'Editors', href: '/admin/editors', icon: FileText, status: 'active' },
+  { name: 'Calendar', href: '/admin/calendar', icon: Calendar, status: 'active' },
+  { name: 'Analytics', href: '/admin/analytics', icon: BarChart3, status: 'active' },
+  { name: 'Invoices', href: '/admin/invoices', icon: CreditCard, status: 'active' },
+  { name: 'Settings', href: '/admin/settings', icon: Settings, status: 'active' },
 ];
 
-const userPortals = [
-  { name: 'Customer Portal', href: '/customer', icon: Users },
-  { name: 'Photographer Portal', href: '/photographer', icon: Camera },
-  { name: 'Editor Portal', href: '/editor', icon: FileText },
-  { name: 'Login', href: '/login', icon: Settings },
-];
+const userPortals: Array<never> = [];
 
 export function Sidebar() {
   const pathname = usePathname();
@@ -98,47 +93,28 @@ export function Sidebar() {
               })}
         </div>
         
-        <div>
-          <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
-            User Portals
-          </h3>
-          {userPortals.map((item) => {
-            const isActive = pathname === item.href;
-            return (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={cn(
-                  'group flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors',
-                  isActive
-                    ? 'bg-green-50 text-green-700 border-r-2 border-green-700'
-                    : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
-                )}
-              >
-                <item.icon
-                  className={cn(
-                    'mr-3 h-5 w-5 flex-shrink-0',
-                    isActive ? 'text-green-700' : 'text-gray-400 group-hover:text-gray-500'
-                  )}
-                />
-                {item.name}
-              </Link>
-            );
-          })}
-        </div>
+            {userPortals.length > 0 && (
+              <div>
+                <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
+                  User Portals
+                </h3>
+              </div>
+            )}
       </nav>
 
-      {/* User info */}
+      {/* Logout */}
       <div className="border-t border-gray-200 p-4">
-        <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
-            <span className="text-sm font-medium text-gray-700">A</span>
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-gray-900 truncate">Admin User</p>
-            <p className="text-xs text-gray-500 truncate">admin@photopro.vn</p>
-          </div>
-        </div>
+        <button
+          onClick={() => {
+            localStorage.removeItem('user');
+            localStorage.removeItem('accessToken');
+            localStorage.removeItem('refreshToken');
+            window.location.href = '/login';
+          }}
+          className="w-full text-left text-sm font-medium text-red-600 hover:underline"
+        >
+          Logout
+        </button>
       </div>
     </div>
   );
