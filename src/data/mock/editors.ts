@@ -4,7 +4,7 @@ export interface EditorItem extends Editor {
   activeProjects: number;
 }
 
-export const mockEditors: Editor[] = [
+export const mockEditors: EditorItem[] = [
   {
     id: 'editor-1',
     name: 'Nguyễn Thị Hoa',
@@ -37,7 +37,8 @@ export const mockEditors: Editor[] = [
       '/images/portfolio/editor-1-3.jpg'
     ],
     currentWorkload: 3,
-    maxWorkload: 5
+    maxWorkload: 5,
+    activeProjects: 3
   },
   {
     id: 'editor-2',
@@ -71,7 +72,8 @@ export const mockEditors: Editor[] = [
       '/images/portfolio/editor-2-3.jpg'
     ],
     currentWorkload: 4,
-    maxWorkload: 6
+    maxWorkload: 6,
+    activeProjects: 4
   },
   {
     id: 'editor-3',
@@ -105,7 +107,8 @@ export const mockEditors: Editor[] = [
       '/images/portfolio/editor-3-3.jpg'
     ],
     currentWorkload: 2,
-    maxWorkload: 4
+    maxWorkload: 4,
+    activeProjects: 2
   },
   {
     id: 'editor-4',
@@ -139,7 +142,8 @@ export const mockEditors: Editor[] = [
       '/images/portfolio/editor-4-3.jpg'
     ],
     currentWorkload: 5,
-    maxWorkload: 7
+    maxWorkload: 7,
+    activeProjects: 5
   }
 ];
 
