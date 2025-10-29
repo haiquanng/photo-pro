@@ -68,7 +68,7 @@ export function RecentProjects({ projects }: RecentProjectsProps) {
                     </div>
                     <div className="flex items-center space-x-1">
                       <Calendar className="w-3 h-3" />
-                      <span>{formatDate(project.startDate)}</span>
+                      <span>{formatDate(project.createdAt)}</span>
                     </div>
                   </div>
                 </div>

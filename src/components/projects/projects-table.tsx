@@ -127,7 +127,7 @@ export function ProjectsTable({ projects }: ProjectsTableProps) {
                   </div>
                 </TableCell>
                 <TableCell>
-                  <div className="text-gray-900">{formatDate(project.startDate)}</div>
+                  <div className="text-gray-900">{formatDate(project.createdAt)}</div>
                 </TableCell>
                 <TableCell>
                   <DropdownMenu>

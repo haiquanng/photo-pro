@@ -1,5 +1,9 @@
 import { Editor } from '@/types';
 
+export interface EditorItem extends Editor {
+  activeProjects: number;
+}
+
 export const mockEditors: Editor[] = [
   {
     id: 'editor-1',
