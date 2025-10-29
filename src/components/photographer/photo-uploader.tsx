@@ -24,7 +24,6 @@ interface PhotoUploaderProps {
 }
 
 export function PhotoUploader({
-  projectId,
   onUploadComplete,
   maxFiles = 100,
   maxSizeMB = 50
@@ -44,7 +43,6 @@ export function PhotoUploader({
 
   const processFiles = (fileList: FileList) => {
     const newFiles: PhotoFile[] = [];
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/raw', 'image/x-canon-cr2', 'image/x-nikon-nef'];
 
     Array.from(fileList).forEach((file) => {
       // Validate file type

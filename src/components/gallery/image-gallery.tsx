@@ -5,7 +5,6 @@ import { X, ChevronLeft, ChevronRight, Download, MessageSquare, ZoomIn, ZoomOut 
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ProjectFile } from '@/types';
-import { cn } from '@/lib/utils';
 
 interface ImageGalleryProps {
   images: ProjectFile[];

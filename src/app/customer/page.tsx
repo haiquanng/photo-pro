@@ -92,7 +92,7 @@ export default function CustomerDashboard() {
           </CardHeader>
           <CardContent>
             <div className="flex items-center text-sm text-orange-600">
-              <Image className="h-4 w-4 mr-1" />
+              <Image className="h-4 w-4 mr-1"/>
               Đang chụp/chỉnh sửa
             </div>
           </CardContent>

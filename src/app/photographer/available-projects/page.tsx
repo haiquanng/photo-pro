@@ -6,7 +6,6 @@ import { Search, Filter, Calendar, MapPin } from 'lucide-react';
 import { AvailableProjectsCard } from '@/components/photographer/available-projects-card';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Button } from '@/components/ui/button';
 import { getPendingProjects } from '@/data/mock/projects';
 import { Project, ProjectType } from '@/types';
 import { toast } from 'sonner';

@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from 'react';
-import { User, Shield, Camera, Palette } from 'lucide-react';
+import { User, Shield, Camera } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Badge } from '@/components/ui/badge';
@@ -103,4 +102,3 @@ export function RoleSwitcher({ currentUser, onUserChange }: RoleSwitcherProps) {
 }
 
 export { demoUsers };
-export type { DemoUser };
