@@ -3,8 +3,10 @@
 import Image from 'next/image';
 
 const testimonials = [
-  { id: 't1', name: 'Lan Anh', role: 'Client', text: 'Ekip làm việc rất chuyên nghiệp, ảnh đẹp và giao đúng hẹn!', rating: 5, avatar: 'https://i.pravatar.cc/100?img=1' },
-  { id: 't2', name: 'Minh Hùng', role: 'Client', text: 'Giá hợp lý, hỗ trợ tận tình. Sẽ giới thiệu bạn bè.', rating: 5, avatar: 'https://i.pravatar.cc/100?img=2' },
+  { id: 't1', name: 'Nguyễn Minh Tuấn', role: 'Chủ đầu tư Vinhomes', text: 'Dịch vụ chụp ảnh kiến trúc rất chuyên nghiệp, ảnh chất lượng cao và giao đúng hẹn!', rating: 5, avatar: 'https://i.pravatar.cc/100?img=1' },
+  { id: 't2', name: 'Lê Thị Hương', role: 'Kiến trúc sư', text: 'Hệ thống quản lý dự án rất tiện lợi, theo dõi tiến độ dễ dàng.', rating: 5, avatar: 'https://i.pravatar.cc/100?img=2' },
+  { id: 't3', name: 'Trần Văn Đức', role: 'Chủ nhà phố', text: 'Chụp Before & After rất đẹp, giúp marketing hiệu quả.', rating: 5, avatar: 'https://i.pravatar.cc/100?img=3' },
+  { id: 't4', name: 'Công ty XD Hòa Bình', role: 'Nhà thầu', text: 'Chụp tiến độ thi công giúp báo cáo với chủ đầu tư rất trực quan.', rating: 5, avatar: 'https://i.pravatar.cc/100?img=4' },
 ];
 
 function Stars({ rating }: { rating: number }) {
@@ -23,21 +25,20 @@ export default function Testimonials() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Khách hàng nói gì?</h2>
-          <p className="text-lg text-gray-600">Hơn 100+ đánh giá 5 sao</p>
+          <p className="text-lg text-gray-600">Hơn 200+ dự án kiến trúc đã hoàn thành</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {testimonials.map((t) => (
-            <div key={t.id} className="bg-white rounded-xl shadow-lg p-8">
-              <div className="mb-4 text-purple-200">
-                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" /></svg>
+            <div key={t.id} className="bg-white border border-gray-200 p-8 hover:border-gray-300 transition-colors">
+              <div className="mb-6 text-gray-300">
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" /></svg>
               </div>
-              <p className="text-gray-700 text-lg mb-4">&ldquo;{t.text}&rdquo;</p>
+              <p className="text-gray-700 text-base mb-6 leading-relaxed">&ldquo;{t.text}&rdquo;</p>
               <Stars rating={t.rating} />
-              <div className="flex items-center mt-4">
-                <Image src={t.avatar} alt={t.name} className="w-12 h-12 rounded-full mr-3" width={48} height={48} />
+              <div className="flex items-center mt-6">
                 <div>
-                  <div className="font-semibold text-gray-900">{t.name}</div>
-                  <div className="text-sm text-gray-600">{t.role}</div>
+                  <div className="font-medium text-gray-900">{t.name}</div>
+                  <div className="text-sm text-gray-500">{t.role}</div>
                 </div>
               </div>
             </div>

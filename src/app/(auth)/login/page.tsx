@@ -1,7 +1,6 @@
-'use client';
+"use client";
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -88,144 +87,179 @@ export default function LoginPage() {
   // };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 to-purple-700 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        {/* Logo */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center space-x-2 mb-4">
-            <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
-              <Camera className="w-8 h-8 text-blue-600" />
-            </div>
-            <span className="text-3xl font-bold text-white">PhotoPro</span>
+    <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2">
+      {/* Left Panel: Image + Testimonial */}
+      <div className="relative hidden lg:flex flex-col justify-end bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-12">
+        {/* Background Image Overlay */}
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000')] bg-cover bg-center opacity-20" />
+        
+        {/* Content */}
+        <div className="relative z-10">
+          {/* Quote Icon */}
+          <div className="mb-6">
+            <svg className="w-12 h-12 text-white/40" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
           </div>
-          <p className="text-blue-100">Professional Photography Platform</p>
+
+          {/* Testimonial Text */}
+          <blockquote className="text-white text-xl md:text-2xl font-light leading-relaxed mb-6">
+            PhotoPro giúp chúng tôi quản lý toàn bộ quy trình chụp ảnh kiến trúc một cách chuyên nghiệp và hiệu quả. Từ đặt lịch đến giao hàng, mọi thứ đều rõ ràng và minh bạch.
+          </blockquote>
+
+          {/* Author */}
+          <div>
+            <p className="text-white font-semibold">Nguyễn Văn An</p>
+            <p className="text-white/60 text-sm">Giám đốc - Studio Kiến Trúc ABC</p>
+          </div>
+
+          {/* Logo/Branding at bottom */}
+          <div className="mt-12 pt-8 border-t border-white/10">
+            <a href="https://uxpilot.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/60 hover:text-white/80 transition-colors text-sm">
+              <Camera className="w-4 h-4" />
+              <span>photopro.vn</span>
+            </a>
+          </div>
         </div>
+      </div>
 
-        <Card className="shadow-2xl">
-          <CardHeader>
-            <CardTitle className="text-2xl text-center">Welcome Back</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Tabs value={userType} onValueChange={setUserType} className="w-full">
-              <TabsList className="grid w-full grid-cols-4">
-                <TabsTrigger value="customer">Customer</TabsTrigger>
-                <TabsTrigger value="photographer">Photographer</TabsTrigger>
-                <TabsTrigger value="editor">Editor</TabsTrigger>
-                <TabsTrigger value="admin">Admin</TabsTrigger>
-              </TabsList>
+      {/* Right Panel: Login Form */}
+      <div className="flex items-center justify-center p-6 md:p-12 bg-white">
+        <div className="w-full max-w-md">
+          {/* Mobile Logo */}
+          <div className="lg:hidden text-center mb-8">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <Camera className="w-8 h-8 text-slate-800" />
+              <h1 className="text-2xl font-bold text-slate-900">PhotoPro</h1>
+            </div>
+            <p className="text-sm text-slate-600">Giải pháp quản lý chụp ảnh kiến trúc</p>
+          </div>
 
-              <TabsContent value={userType} className="space-y-4">
-                <form onSubmit={handleLogin} className="space-y-4">
-                  <div>
-                    <Label htmlFor="email">Email</Label>
+          {/* Title */}
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold text-slate-900 mb-2">Welcome back!</h2>
+            <p className="text-slate-600">Đăng nhập vào tài khoản của bạn</p>
+          </div>
+
+          {/* Role Selector */}
+          <Tabs value={userType} onValueChange={setUserType} className="mb-6">
+            <TabsList className="grid w-full grid-cols-4 mb-6">
+              <TabsTrigger value="customer" className="text-xs">Khách</TabsTrigger>
+              <TabsTrigger value="photographer" className="text-xs">Photo</TabsTrigger>
+              <TabsTrigger value="editor" className="text-xs">Editor</TabsTrigger>
+              <TabsTrigger value="admin" className="text-xs">Admin</TabsTrigger>
+            </TabsList>
+
+            <TabsContent value={userType}>
+              <form onSubmit={handleLogin} className="space-y-5">
+                {/* Email */}
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-sm font-medium text-slate-700">Email</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="your.email@example.com"
+                    className="h-11"
+                    required
+                    autoComplete="email"
+                  />
+                </div>
+
+                {/* Password */}
+                <div className="space-y-2">
+                  <Label htmlFor="password" className="text-sm font-medium text-slate-700">Password</Label>
+                  <div className="relative">
                     <Input
-                      id="email"
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder={`${userType}@example.com`}
-                      className="mt-1"
+                      id="password"
+                      type={showPassword ? 'text' : 'password'}
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="••••••••"
+                      className="h-11 pr-10"
                       required
+                      autoComplete="current-password"
                     />
-                  </div>
-                  <div>
-                    <Label htmlFor="password">Password</Label>
-                    <div className="relative mt-1">
-                      <Input
-                        id="password"
-                        type={showPassword ? 'text' : 'password'}
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="Enter your password"
-                        required
-                      />
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="sm"
-                        className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
-                        onClick={() => setShowPassword(!showPassword)}
-                      >
-                        {showPassword ? (
-                          <EyeOff className="h-4 w-4" />
-                        ) : (
-                          <Eye className="h-4 w-4" />
-                        )}
-                      </Button>
-                    </div>
-                  </div>
-                  
-                  {/* Demo credentials */}
-                  <div className="bg-blue-50 p-3 rounded-lg">
-                    <p className="text-sm text-blue-800 font-medium mb-2">Demo Credentials:</p>
-                    <div className="space-y-1">
-                      {mockUsers[userType as keyof typeof mockUsers].map((user, index) => (
-                        <div key={index} className="text-xs text-blue-700">
-                          <span className="font-medium">{user.email}</span> / {user.password}
-                          <Button
-                            type="button"
-                            variant="link"
-                            size="sm"
-                            className="ml-2 p-0 h-auto text-blue-600"
-                            onClick={() => {
-                              setEmail(user.email);
-                              setPassword(user.password);
-                            }}
-                          >
-                            Use
-                          </Button>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <label className="flex items-center space-x-2">
-                      <input type="checkbox" className="rounded" />
-                      <span className="text-sm text-gray-600">Remember me</span>
-                    </label>
-                    <Button variant="link" className="p-0 h-auto">
-                      Forgot password?
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      className="absolute right-0 top-0 h-11 px-3 hover:bg-transparent"
+                      onClick={() => setShowPassword(!showPassword)}
+                      aria-label={showPassword ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'}
+                    >
+                      {showPassword ? <EyeOff className="h-4 w-4 text-slate-400" /> : <Eye className="h-4 w-4 text-slate-400" />}
                     </Button>
                   </div>
-                  
-                  <Button 
-                    type="submit" 
-                    className="w-full"
-                    disabled={isLoading}
-                  >
-                    {isLoading ? 'Signing in...' : `Sign In as ${userType.charAt(0).toUpperCase() + userType.slice(1)}`}
-                  </Button>
-                </form>
-                
-                <div className="text-center">
-                  <span className="text-sm text-gray-600">Don&apos;t have an account? </span>
-                  <Button variant="link" className="p-0 h-auto">
-                    Sign up
-                  </Button>
                 </div>
-              </TabsContent>
-            </Tabs>
 
-            <div className="mt-6 pt-6 border-t border-gray-200">
-              <div className="text-center">
+                {/* Submit Button */}
                 <Button 
-                  variant="outline" 
-                  className="w-full"
-                  onClick={() => router.push('/home')}
+                  type="submit" 
+                  className="w-full h-11 text-base font-medium"
+                  disabled={isLoading}
                 >
-                  <Camera className="w-4 h-4 mr-2" />
-                  Back to Home
+                  {isLoading ? 'Đang đăng nhập...' : 'Đăng nhập'}
                 </Button>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+              </form>
 
-        <div className="text-center mt-6">
-          <p className="text-blue-100 text-sm">
-            © 2024 PhotoPro. All rights reserved.
-          </p>
+              {/* Divider */}
+              <div className="relative my-6">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-slate-200" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-white px-2 text-slate-500">hoặc</span>
+                </div>
+              </div>
+
+              {/* Demo Accounts */}
+              <div className="space-y-3">
+                <p className="text-sm text-slate-600 text-center">Tài khoản demo nhanh:</p>
+                <div className="space-y-2">
+                  {mockUsers[userType as keyof typeof mockUsers].map((user, index) => (
+                    <button
+                      key={index}
+                      type="button"
+                      onClick={() => {
+                        setEmail(user.email);
+                        setPassword(user.password);
+                      }}
+                      className="w-full text-left px-4 py-3 rounded-lg border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-colors"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <p className="text-sm font-medium text-slate-900">{user.name}</p>
+                          <p className="text-xs text-slate-500">{user.email}</p>
+                        </div>
+                        <div className="text-xs text-slate-400">→</div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </TabsContent>
+          </Tabs>
+
+          {/* Footer Links */}
+          <div className="mt-8 text-center space-y-4">
+            <p className="text-sm text-slate-600">
+              Chưa có tài khoản?{' '}
+              <Button variant="link" className="p-0 h-auto font-semibold text-slate-900" onClick={() => router.push('/register')}>
+                Đăng ký ngay
+              </Button>
+            </p>
+            
+            <Button 
+              variant="ghost" 
+              size="sm"
+              onClick={() => router.push('/')}
+              className="text-slate-600"
+            >
+              ← Về trang chủ
+            </Button>
+          </div>
         </div>
       </div>
     </div>

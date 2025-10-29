@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
-import { Edit, User, Bell, Settings } from 'lucide-react';
+import { User, Bell } from 'lucide-react';
 import { EditorSidebar } from '@/components/layout/editor-sidebar';
 
 interface EditorLayoutProps {
@@ -55,17 +55,10 @@ export default function EditorLayout({ children }: EditorLayoutProps) {
         <header className="bg-white border-b border-gray-200 px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-green-600 to-teal-600 rounded-lg flex items-center justify-center">
-                <Edit className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-xl font-bold text-gray-900">PhotoPro</span>
             </div>
             <div className="flex items-center space-x-4">
               <Button variant="ghost" size="sm">
                 <Bell className="w-4 h-4" />
-              </Button>
-              <Button variant="ghost" size="sm">
-                <Settings className="w-4 h-4" />
               </Button>
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">

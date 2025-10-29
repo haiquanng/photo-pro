@@ -1,25 +1,16 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
-import {
-  LayoutDashboard,
-  FolderOpen,
-  Edit,
-  Image as ImageIcon,
-  Layers,
-  Settings
-} from 'lucide-react';
+import { LayoutDashboard, FolderOpen, Edit, Settings } from 'lucide-react';
 
 const navigation = [
   { name: 'Dashboard', href: '/editor', icon: LayoutDashboard, status: 'active' },
   { name: 'Editing Queue', href: '/editor/queue', icon: Edit, status: 'active' },
   { name: 'Projects', href: '/editor/projects', icon: FolderOpen, status: 'active' },
-  { name: 'Assets', href: '/editor/assets', icon: ImageIcon, status: 'active' },
-  { name: 'Versions', href: '/editor/versions', icon: Layers, status: 'active' },
-  { name: 'Discussion', href: '/editor/discussion', icon: Edit, status: 'active' },
   { name: 'Settings', href: '/editor/settings', icon: Settings, status: 'active' },
 ];
 
@@ -31,10 +22,9 @@ export function EditorSidebar() {
       {/* Logo */}
       <div className="flex h-16 shrink-0 items-center px-6 border-b border-gray-200">
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-gradient-to-br from-green-600 to-teal-600 rounded-lg flex items-center justify-center">
-            <Edit className="w-5 h-5 text-white" />
-          </div>
-          <span className="text-xl font-bold text-gray-900">PhotoPro</span>
+          <Link href="/">
+            <Image src="/images/logo.png" alt="Logo" width={140} height={64} />
+          </Link>
         </div>
       </div>
 
@@ -59,7 +49,7 @@ export function EditorSidebar() {
               className={cn(
                 'group flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors',
                 isActive
-                  ? 'bg-green-50 text-green-700 border-r-2 border-green-700'
+                  ? 'bg-purple-50 text-purple-700 border-r-2 border-purple-700'
                   : item.status === 'coming-soon'
                   ? 'text-gray-400 cursor-not-allowed'
                   : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
@@ -68,7 +58,7 @@ export function EditorSidebar() {
               <item.icon
                 className={cn(
                   'mr-3 h-5 w-5 flex-shrink-0',
-                  isActive ? 'text-green-700' :
+                  isActive ? 'text-purple-700' :
                   item.status === 'coming-soon' ? 'text-gray-300' :
                   'text-gray-400 group-hover:text-gray-500'
                 )}

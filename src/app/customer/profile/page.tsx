@@ -11,10 +11,11 @@ import {
   Edit,
   Save
 } from 'lucide-react';
+import Link from 'next/link';
 
 export default function CustomerProfile() {
   const customerData = {
-    name: 'Nguyễn Thị Minh Châu',
+    name: 'Nguyễn Minh Tuấn',
     email: 'customer@example.com',
     phone: '+84 901 234 567',
     address: '123 Nguyễn Huệ, Quận 1, TP.HCM',
@@ -27,11 +28,11 @@ export default function CustomerProfile() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">My Profile</h1>
-        <p className="text-gray-600">Manage your account information and preferences</p>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Tài khoản của tôi</h1>
+        <p className="text-gray-600">Quản lý thông tin tài khoản và sở thích của bạn</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -46,48 +47,32 @@ export default function CustomerProfile() {
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="name">Full Name</Label>
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="name">Họ và Tên</Label>
                   <Input id="name" defaultValue={customerData.name} />
                 </div>
-                <div>
+                <div className="flex flex-col gap-2">
                   <Label htmlFor="email">Email</Label>
                   <Input id="email" type="email" defaultValue={customerData.email} />
                 </div>
-                <div>
-                  <Label htmlFor="phone">Phone Number</Label>
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="phone">Số điện thoại</Label>
                   <Input id="phone" defaultValue={customerData.phone} />
                 </div>
-                <div>
-                  <Label htmlFor="address">Address</Label>
+                <div className="flex flex-col gap-2">
+                  <Label htmlFor="address">Địa chỉ</Label>
                   <Input id="address" defaultValue={customerData.address} />
                 </div>
               </div>
               
-              <div>
-                <Label htmlFor="bio">Bio</Label>
-                <Textarea 
-                  id="bio" 
-                  placeholder="Tell us about yourself..."
+              <div className="flex flex-col gap-2">
+                <Label htmlFor="bio">Giới thiệu</Label>
+                <Textarea
+                  id="bio"
+                  placeholder="Hãy cho chúng tôi biết về bạn..."
                   className="mt-1"
                   rows={4}
                 />
-              </div>
-
-              <div>
-                <Label>Photography Preferences</Label>
-                <div className="mt-2 space-y-2">
-                  {['Wedding', 'Fashion', 'Portrait', 'Event', 'Commercial'].map((preference) => (
-                    <label key={preference} className="flex items-center space-x-2">
-                      <input 
-                        type="checkbox" 
-                        defaultChecked={customerData.preferences.includes(preference)}
-                        className="rounded"
-                      />
-                      <span className="text-sm text-gray-700">{preference}</span>
-                    </label>
-                  ))}
-                </div>
               </div>
 
               <div className="flex space-x-4">
@@ -107,25 +92,25 @@ export default function CustomerProfile() {
         <div className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle>Account Status</CardTitle>
+              <CardTitle>Trạng thái tài khoản</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600">Member Since</span>
+                <span className="text-sm text-gray-600">Tham gia từ</span>
                 <span className="font-medium">{customerData.joinDate}</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600">Tier</span>
+                <span className="text-sm text-gray-600">Loại tài khoản</span>
                 <Badge className="bg-purple-100 text-purple-800">
                   {customerData.tier}
                 </Badge>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600">Total Bookings</span>
+                <span className="text-sm text-gray-600">Tổng số lịch đặt</span>
                 <span className="font-medium">{customerData.totalBookings}</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600">Total Spent</span>
+                <span className="text-sm text-gray-600">Tổng chi tiêu</span>
                 <span className="font-medium">
                   {new Intl.NumberFormat('vi-VN', {
                     style: 'currency',
@@ -139,7 +124,7 @@ export default function CustomerProfile() {
 
           <Card>
             <CardHeader>
-              <CardTitle>Favorite Photographer</CardTitle>
+              <CardTitle>Photographer Yêu Thích</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="flex items-center space-x-3">
@@ -150,7 +135,7 @@ export default function CustomerProfile() {
                   <p className="font-medium text-gray-900">{customerData.favoritePhotographer}</p>
                   <div className="flex items-center space-x-1">
                     <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                    <span className="text-sm text-gray-600">4.9 rating</span>
+                    <span className="text-sm text-gray-600">4.9 sao</span>
                   </div>
                 </div>
               </div>
@@ -159,20 +144,18 @@ export default function CustomerProfile() {
 
           <Card>
             <CardHeader>
-              <CardTitle>Quick Actions</CardTitle>
+              <CardTitle>Thao tác nhanh</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               <Button variant="outline" className="w-full justify-start">
                 <Edit className="w-4 h-4 mr-2" />
-                Edit Profile
+                Chỉnh sửa hồ sơ
               </Button>
               <Button variant="outline" className="w-full justify-start">
-                <Camera className="w-4 h-4 mr-2" />
-                Book Session
-              </Button>
-              <Button variant="outline" className="w-full justify-start">
-                <Star className="w-4 h-4 mr-2" />
-                View Portfolio
+                <Link className="w-4 h-4 mr-2 flex flex-row items-center gap-2" href='/customer/projects/new'>
+                  <Camera className="w-4 h-4 mr-2" />
+                  Đặt lịch chụp mới
+                </Link>
               </Button>
             </CardContent>
           </Card>

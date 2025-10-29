@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
-import { Camera } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
+import AnchorNav from '@/components/layout/AnchorNav';
 import Hero from '@/components/homepage/Hero';
 import About from '@/components/homepage/About';
 import Services from '@/components/homepage/Services';
@@ -13,75 +14,77 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* DEV/DEMO MODE - Quick Access Banner */}
+      <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 py-3 shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="text-center md:text-left">
+              <p className="text-sm font-semibold">🚀 DEMO MODE - Truy cập nhanh các trang</p>
+            </div>
+            <div className="flex flex-wrap gap-2 justify-center">
+              <Link href="/customer">
+                <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
+                  👤 Khách hàng
+                </Button>
+              </Link>
+              <Link href="/photographer">
+                <Button size="sm" className="bg-purple-600 hover:bg-purple-700 text-white">
+                  📸 Photographer
+                </Button>
+              </Link>
+              <Link href="/editor">
+                <Button size="sm" className="bg-orange-600 hover:bg-orange-700 text-white">
+                  ✏️ Editor
+                </Button>
+              </Link>
+              <Link href="/project-forum/1">
+                <Button size="sm" className="bg-green-600 hover:bg-green-700 text-white">
+                  🗣️ Project Forum
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Header */}
-      <header className="bg-white border-b">
+      <header className="bg-white border-b sticky top-0 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center gap-2">
-              <div className="w-9 h-9 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <Camera className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-xl font-bold text-gray-900">PhotoPro</span>
+              <Link
+                href="/"
+                className="flex items-center gap-2"
+              >
+                <Image src="/images/logo.png" alt="logo" className='w-full h-12' width={800} height={50} />
+              </Link>
             </div>
-            <nav className="hidden md:flex items-center gap-6 text-sm">
-              <Link href="#photographers" className="text-gray-700 hover:text-gray-900">Nhiếp Ảnh Gia</Link>
-              <Link href="#sessions" className="text-gray-700 hover:text-gray-900">Danh Sách Buổi Chụp</Link>
-              <Link href="#about" className="text-gray-700 hover:text-gray-900">Về Chúng Tôi</Link>
-              <Link href="/login" className="px-4 py-2 rounded-lg bg-orange-500 text-white">Đăng nhập/Đăng ký</Link>
-            </nav>
+            <AnchorNav />
           </div>
         </div>
       </header>
 
       <Hero />
 
-     
-
-      {/* New Sections */}
       <About />
-      <Services />
-      <Workflow />
+      <div id="service"><Services /></div>
+      <div id="workflow"><Workflow /></div>
       <Testimonials />
-      <TopPhotographers />
+      <div id="team"><TopPhotographers /></div>
       <CallToAction />
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-4">Ready to Get Started?</h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Join thousands of photographers who trust PhotoPro for their business
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/customer">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
-                Start as Customer
-              </Button>
-            </Link>
-            <Link href="/login">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
-                Login to Portal
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-black text-white p-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="flex items-center justify-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <Camera className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-xl font-bold">PhotoPro</span>
+          <div className="text-center flex flex-row items-center justify-between">
+            <div className="flex flex-col items-start justify-center space-x-2 mb-4">
+              <Image src="/images/logo.png" alt="logo" className='w-40 h-12' width={800} height={50} />
+              <p className="text-gray-400 mb-4">
+                Professional Photography Management Platform
+              </p>
             </div>
-            <p className="text-gray-400 mb-4">
-              Professional Photography Management Platform
-            </p>
             <p className="text-gray-500 text-sm">
-              © 2024 PhotoPro. All rights reserved.
+              © 2025 PhotoPro. All rights reserved.
             </p>
           </div>
         </div>
