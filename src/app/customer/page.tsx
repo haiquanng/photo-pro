@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { PlusCircle, FolderOpen, Clock, CheckCircle2, Image } from 'lucide-react';
+import { PlusCircle, FolderOpen, Clock, CheckCircle2, Image as ImageIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -92,7 +92,7 @@ export default function CustomerDashboard() {
           </CardHeader>
           <CardContent>
             <div className="flex items-center text-sm text-orange-600">
-              <Image className="h-4 w-4 mr-1"/>
+              <ImageIcon className="h-4 w-4 mr-1" />
               Đang chụp/chỉnh sửa
             </div>
           </CardContent>

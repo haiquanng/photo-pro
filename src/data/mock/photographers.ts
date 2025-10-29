@@ -192,9 +192,7 @@ export const getAvailablePhotographers = (date?: string): Photographer[] => {
   if (!date) return mockPhotographers;
 
   return mockPhotographers.filter(photographer => {
-    const dayOfWeek = new Date(date).toLocaleLowerCase();
     const unavailableDates = photographer.availability.unavailableDates || [];
-
     return !unavailableDates.includes(date);
   });
 };

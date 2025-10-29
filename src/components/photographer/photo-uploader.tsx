@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useCallback } from 'react';
-import { Upload, X, Check, AlertCircle, Image as ImageIcon, File } from 'lucide-react';
+import NextImage from 'next/image';
+import { Upload, X, Check, AlertCircle, File } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
@@ -41,7 +42,7 @@ export function PhotoUploader({
     setIsDragging(false);
   }, []);
 
-  const processFiles = (fileList: FileList) => {
+  const processFiles = useCallback((fileList: FileList) => {
     const newFiles: PhotoFile[] = [];
 
     Array.from(fileList).forEach((file) => {
@@ -74,7 +75,7 @@ export function PhotoUploader({
     });
 
     setFiles(prev => [...prev, ...newFiles].slice(0, maxFiles));
-  };
+  }, [maxSizeMB, maxFiles]);
 
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -84,7 +85,7 @@ export function PhotoUploader({
     if (droppedFiles) {
       processFiles(droppedFiles);
     }
-  }, [maxFiles, maxSizeMB]);
+  }, [processFiles]);
 
   const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files: selectedFiles } = e.target;
@@ -223,9 +224,11 @@ export function PhotoUploader({
               <div key={file.id} className="relative group">
                 <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden">
                   {file.preview ? (
-                    <img
+                    <NextImage
                       src={file.preview}
                       alt={file.file.name}
+                      width={200}
+                      height={200}
                       className="w-full h-full object-cover"
                     />
                   ) : (

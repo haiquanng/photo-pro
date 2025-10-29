@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from 'react';
-import { Folder, Image, FileText, Download, MoreVertical, Grid3x3, List, ChevronDown } from 'lucide-react';
+import { Folder, Image as ImageIcon, FileText, Download, MoreVertical, Grid3x3, List, ChevronDown } from 'lucide-react';
+import NextImage from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
@@ -42,7 +43,7 @@ export function FolderView({
       case 'folder':
         return <Folder className="h-12 w-12 text-blue-500" />;
       case 'image':
-        return <Image className="h-12 w-12 text-green-500" />;
+        return <ImageIcon className="h-12 w-12 text-green-500" />;
       case 'document':
         return <FileText className="h-12 w-12 text-orange-500" />;
       default:
@@ -79,13 +80,13 @@ export function FolderView({
     }
   });
 
-  const toggleSelectItem = (id: string, e: React.MouseEvent) => {
+  const toggleSelectItem = (itemId: string, e: React.MouseEvent) => {
     e.stopPropagation();
     const newSelected = new Set(selectedItems);
-    if (newSelected.has(id)) {
-      newSelected.delete(id);
+    if (newSelected.has(itemId)) {
+      newSelected.delete(itemId);
     } else {
-      newSelected.add(id);
+      newSelected.add(itemId);
     }
     setSelectedItems(newSelected);
   };
@@ -157,7 +158,7 @@ export function FolderView({
                 <input
                   type="checkbox"
                   checked={selectedItems.has(item.id)}
-                  onChange={(e) => toggleSelectItem(item.id, e as any)}
+                  onChange={() => toggleSelectItem(item.id, {} as React.MouseEvent)}
                   className="w-4 h-4 rounded border-gray-300"
                   onClick={(e) => e.stopPropagation()}
                 />
@@ -194,9 +195,11 @@ export function FolderView({
                 {/* Thumbnail or Icon */}
                 {item.thumbnail ? (
                   <div className="w-full aspect-square mb-3 rounded overflow-hidden bg-gray-100">
-                    <img
+                    <NextImage
                       src={item.thumbnail}
                       alt={item.name}
+                      width={200}
+                      height={200}
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -258,7 +261,7 @@ export function FolderView({
                     <input
                       type="checkbox"
                       checked={selectedItems.has(item.id)}
-                      onChange={(e) => toggleSelectItem(item.id, e as any)}
+                      onChange={() => toggleSelectItem(item.id, {} as React.MouseEvent)}
                       className="rounded border-gray-300"
                       onClick={(e) => e.stopPropagation()}
                     />
@@ -266,7 +269,13 @@ export function FolderView({
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-3">
                       {item.thumbnail ? (
-                        <img src={item.thumbnail} alt={item.name} className="w-10 h-10 rounded object-cover" />
+                        <NextImage 
+                          src={item.thumbnail} 
+                          alt={item.name} 
+                          width={40}
+                          height={40}
+                          className="w-10 h-10 rounded object-cover" 
+                        />
                       ) : (
                         <div className="flex-shrink-0">
                           {getIcon(item)}

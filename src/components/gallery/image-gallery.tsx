@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from 'react';
-import { X, ChevronLeft, ChevronRight, Download, MessageSquare, ZoomIn, ZoomOut } from 'lucide-react';
+import NextImage from 'next/image';
+import { X, Download, MessageSquare, ZoomIn, ZoomOut, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ProjectFile } from '@/types';
@@ -72,10 +73,12 @@ export function ImageGallery({ images, onCommentClick, onDownload }: ImageGaller
             className="group relative aspect-square bg-gray-100 rounded-lg overflow-hidden cursor-pointer"
             onClick={() => openLightbox(index)}
           >
-            <img
+            <NextImage
               src={image.thumbnailUrl || image.url}
               alt={image.name}
-              className="w-full h-full object-cover transition-transform group-hover:scale-110"
+              fill
+              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+              className="object-cover transition-transform group-hover:scale-110"
             />
 
             {/* Overlay on hover */}
@@ -198,11 +201,13 @@ export function ImageGallery({ images, onCommentClick, onDownload }: ImageGaller
           )}
 
           {/* Image */}
-          <div className="max-w-7xl max-h-[80vh] overflow-auto">
-            <img
+          <div className="max-w-7xl max-h-[80vh] overflow-auto relative">
+            <NextImage
               src={selectedImage.url}
               alt={selectedImage.name}
-              className="max-w-full max-h-full object-contain transition-transform"
+              width={1920}
+              height={1080}
+              className="max-w-full h-auto object-contain transition-transform"
               style={{ transform: `scale(${zoom})` }}
             />
           </div>
